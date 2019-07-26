@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ashback"
+    tools:context=".Wallet">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/mregular"
+                android:padding="5dp"
+                android:text="Remaining Contribution"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/remainingAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/circle"
+                android:elevation="6dp"
+                android:fontFamily="@font/mm"
+                android:gravity="center|center_vertical"
+                android:text="00.00"
+                android:textColor="@color/text_Color"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/mm"
+                android:padding="5dp"
+                android:text="Pending Contributions:"
+                android:textColor="@color/text_Color"
+                android:textSize="16sp" />
+
+            <ListView
+                android:id="@+id/pendingContri"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_marginTop="5dp"
+                android:nestedScrollingEnabled="true"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp">
+
+            </ListView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

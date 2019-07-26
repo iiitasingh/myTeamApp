@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#232323">
+
+    <TextView
+        android:id="@+id/DeleteEventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Name"
+        android:textSize="16sp"
+        android:fontFamily="@font/mr"
+        android:textColor="@color/white"
+        android:padding="8dp"/>
+    <Button
+        android:id="@+id/DeleteEventBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textAlignment="textStart"
+        android:fontFamily="@font/mr"
+        android:drawablePadding="8dp"
+        android:paddingStart="8dp"
+        android:drawableStart="@drawable/delete_forever_black_24dp"
+        android:text="Delete"/>
+
+</LinearLayout>
