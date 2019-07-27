@@ -319,22 +319,22 @@ public class HomePage extends AppCompatActivity {
         taskRead3.execute("https://voteforashish.000webhostapp.com/myTeam/getEvents.php");
     }
 
-    Button logout, profile;
+    TextView logout, profile;
     ImageView logoutUserImg;
 
     private void logoutPopup(Activity popActivity, final User membMail) {
 
         logoutProfile.setContentView(R.layout.popup_logout);
 
-        int width1 = (int) (popActivity.getResources().getDisplayMetrics().widthPixels * .8);
-        int height1 = (int) (popActivity.getResources().getDisplayMetrics().heightPixels * .6);
-        logoutProfile.getWindow().setLayout(width1, height1);
+//        int width1 = (int) (popActivity.getResources().getDisplayMetrics().widthPixels * .8);
+//        int height1 = (int) (popActivity.getResources().getDisplayMetrics().heightPixels * .6);
+//        logoutProfile.getWindow().setLayout(width1, height1);
         logoutProfile.getWindow().setGravity(Gravity.CENTER);
         logoutProfile.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         logoutProfile.show();
 
-        logout = (Button) logoutProfile.findViewById(R.id.btnLogout);
-        profile = (Button) logoutProfile.findViewById(R.id.btnProfile);
+        logout = (TextView) logoutProfile.findViewById(R.id.btnLogout);
+        profile = (TextView) logoutProfile.findViewById(R.id.btnProfile);
         logoutUserImg = (ImageView) logoutProfile.findViewById(R.id.logoutUserImg);
 
 

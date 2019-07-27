@@ -7,6 +7,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,12 +21,18 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Base64;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.kosalgeek.android.json.JsonConverter;
@@ -54,7 +61,7 @@ import static com.ashish.myteam.SplashScreen.profileUser;
 
 public class Resume extends AppCompatActivity {
 
-    ImageView resumeWallpaper, resumeImgEdit, editAboutImg, resumeEdit;
+    ImageView resumeWallpaper, resumeImgEdit;
     TextView resumeName, resumeDesignation, textVwabout, resumeHobbies, resumeAbout, resumeEmail, resumeEditBtn;
     CircleImageView circleResumeImageView;
     final int REQUEST_CODE_GALLERY = 888;
@@ -73,8 +80,6 @@ public class Resume extends AppCompatActivity {
 
         resumeWallpaper = (ImageView) findViewById(R.id.resumeWallpaper);
         resumeImgEdit = (ImageView) findViewById(R.id.resumeImgEdit);
-        editAboutImg = (ImageView) findViewById(R.id.editAboutImg);
-        resumeEdit = (ImageView) findViewById(R.id.resumeEdit);
         resumeName = (TextView) findViewById(R.id.resumeName);
         resumeDesignation = (TextView) findViewById(R.id.resumeDesignation);
         textVwabout = (TextView) findViewById(R.id.textVwabout);
@@ -91,8 +96,6 @@ public class Resume extends AppCompatActivity {
         if(position == pos){
             owner = profileUser;
             resumeImgEdit.setVisibility(View.VISIBLE);
-            editAboutImg.setVisibility(View.VISIBLE);
-            resumeEdit.setVisibility(View.VISIBLE);
             resumeEditBtn.setVisibility(View.VISIBLE);
             setResumeData(owner);
         }else {
@@ -113,18 +116,11 @@ public class Resume extends AppCompatActivity {
                 aboutPopup(Resume.this,owner);
             }
         });
-        editAboutImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                aboutEditPopup(Resume.this, owner);
-            }
-        });
-        resumeEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                aboutYourselfPopup(Resume.this, owner);
-            }
-        });
+
+    }
+
+    public void showDefaultPopupMenu(View view) {
+        showPopupMenu(view, false, R.style.MyPopupStyle);
     }
 
     public void updateUserData() {
@@ -521,5 +517,44 @@ public class Resume extends AppCompatActivity {
         } else {
             Toast.makeText(Resume.this, "minimum 10 characters in hoobies", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showPopupMenu(View anchor, boolean isWithIcons, int style) {
+        //init the wrapper with style
+        Context wrapper = new ContextThemeWrapper(this, style);
+
+        //init the popup
+        PopupMenu popup = new PopupMenu(wrapper, anchor);
+
+        /*  The below code in try catch is responsible to display icons*/
+
+        //inflate menu
+        popup.getMenuInflater().inflate(R.menu.popup_edit_menues, popup.getMenu());
+
+        //implement click events
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.menu1:
+                        aboutEditPopup(Resume.this, owner);
+                        break;
+                    case R.id.menu2:
+                        aboutYourselfPopup(Resume.this, owner);
+                        break;
+                    case R.id.menu3:
+                        Toast.makeText(Resume.this, "Coming Soon", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu4:
+                        Toast.makeText(Resume.this, "Coming Soon", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu5:
+                        Toast.makeText(Resume.this, "Coming Soon", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
+        popup.show();
     }
 }

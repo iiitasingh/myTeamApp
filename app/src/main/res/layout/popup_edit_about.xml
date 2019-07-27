@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:layout_constraintCircleRadius="30dp"
     android:theme="@style/Theme.MaterialComponents">
@@ -12,8 +12,8 @@
     <com.github.florent37.shapeofview.shapes.BubbleView
         android:id="@+id/bubbleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom|center"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:arrow_posititon_percent="0.5"
         app:shape_bubble_arrowHeight="30dp"
         app:shape_bubble_arrowPosition="bottom"
@@ -22,12 +22,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/pop_bg">
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="35dp">
 
                 <LinearLayout
